@@ -1,0 +1,74 @@
+<html>
+<head><title>Shutter Collections</title>
+    <link rel="icon" type="image/x-icon" href="SCIcon.png">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function addToCart(product, price, image, details) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const itemIndex = cart.findIndex(item => item.product === product);
+            if (itemIndex !== -1) {
+                cart[itemIndex].quantity += 1;
+            } else {
+                cart.push({ product, price, image, details, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${product} added to cart`);
+        }
+    </script>
+</head>
+<body>
+    <img id="topfilm" src="AboutFilm.jpg">
+    <div class="button-container">
+        <a class="index" href="index.html">Home</a>
+        <a class="button" href="AboutUs.html">About Us</a>
+        <a class="button1" href="ContactUs.html">Contact Us</a>
+        <a class="button2" href="Homepage.html">Products</a>
+        <a class="type">Camera Accessories</a>
+    </div>
+    <h1>Product List</h1>
+    <div class="product-list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Details</th>
+                    <th>Price</th>
+                    <th>Add to Cart</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="Acce1.jpg" alt="Accessories 1" class="product-image"></td>
+                    <td>Fotopro Tripod E7 with E7 Head Gray</td>
+                    <td>Load Capacity: 22 lb/10kg</td>
+                    <td>₱ 51,000</td>
+                    <td><button class="buttonx" onclick="addToCart('Fotopro Tripod E7 with E7 Head Gray', 51000, 'Acce1.jpg', 'Load Capacity: 22 lb/10kg')">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td><img src="Acce2.jpeg" alt="Accessories 2" class="product-image"></td>
+                    <td>Godox AD600Pro Witstro</td>
+                    <td>All-in-One Outdoor Flash Kit TTL Version</td>
+                    <td>₱ 49,680</td>
+                    <td><button class="buttonx" onclick="addToCart('Godox AD600Pro Witstro', 49680, 'Acce2.jpeg', 'All-in-One Outdoor Flash Kit TTL Version')">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td><img src="Acce3.jpeg" alt="Accessories 3" class="product-image"></td>
+                    <td>Godox V860 III </td>
+                    <td>TTL Li-Ion Camera Flash Kit for Sony</td>
+                    <td>₱ 11,100</td>
+                    <td><button class="buttonx" onclick="addToCart('Godox V860 III ', 11100, 'Acce3.jpeg', 'TTL Li-Ion Camera Flash Kit for Sony')">Add to Cart</button></td>
+                </tr>
+				<tr>
+                    <td><img src="Acce4.jpg" alt="Accessories 3" class="product-image"></td>
+                    <td>SANDISK EXTREME PRO UHS-II SDHC 64GB</td>
+                    <td>64GB Storage Capacity UHS-II / V90 / U3 / Class 10</td>
+                    <td>₱ 3,850</td>
+                    <td><button class="buttonx" onclick="addToCart('SANDISK EXTREME PRO UHS-II SDHC 64GB', 3850, 'Acce4.jpg', '64GB Storage Capacity UHS-II / V90 / U3 / Class 10')">Add to Cart</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a class="viewcart" href="cart.html">View Cart</a>
+</body>
+</html>

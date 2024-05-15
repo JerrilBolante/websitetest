@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Shutter Collections</title>
+<link rel="icon" type="image/x-icon" href="SCIcon.png">
+<link rel="stylesheet" href="style.css">
+
+<script>
+        function addToCart(product, price, image, details) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const itemIndex = cart.findIndex(item => item.product === product);
+            if (itemIndex !== -1) {
+                cart[itemIndex].quantity += 1;
+            } else {
+                cart.push({ product, price, image, details, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${product} added to cart`);
+        }
+</script>
+</head>
+<body>
+
+<img id="topfilm" src="AboutFilm.jpg">
+<div class="button-container">
+	<a class="index" href="index.html">Home</a>
+	<a class="button" href="AboutUs.html">About Us</a>
+	<a class="button1" href="ContactUs.html">Contact Us</a>
+	<a class="button2" href="Homepage.html">Products</a>
+	<a class="type">Camera Lens</a>
+</div>
+ <h1>Product List</h1>
+ 
+ <div class="product-list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Details</th>
+                    <th>Price</th>
+                    <th>Add to Cart</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="Lens1.jpeg" alt="Lens 1" class="product-image"></td>
+                    <td>Sony FE 16-25MM F2.8 G Lens</td>
+                    <td>Full-Frame | f/2.8 to f/22</td>
+                    <td>₱ 73,140</td>
+                    <td><button class="buttonx" onclick="addToCart('Sony FE 16-25MM F2.8 G Lens', 73140, 'Lens1.jpeg', 'Full-Frame | f/2.8 to f/22')">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td><img src="Lens2.jpeg" alt="Lens 2" class="product-image"></td>
+                    <td>Viltrox AF 16mm F1.8 Lens</td>
+                    <td>Sony FE Mount</td>
+                    <td>₱ 28,999</td>
+                    <td><button class="buttonx" onclick="addToCart('Viltrox AF 16mm F1.8 Lens', 28999, 'Lens2.jpeg', 'Sony FE Mount')">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td><img src="Lens3.jpeg" alt="Lens 3" class="product-image"></td>
+                    <td>Tamron A068S 17-50mm</td>
+                    <td>F4 Di III VXD for Sony E Mount</td>
+                    <td>₱ 47, 996</td>
+                    <td><button class="buttonx" onclick="addToCart('Tamron A068S 17-50mm', 47996, 'Body3.jpeg', 'F4 Di III VXD for Sony E Mount')">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td><img src="Lens4.jpeg" alt="Lens 4" class="product-image"></td>
+                    <td>TT Artisan APS-C AF 27mm</td>
+                    <td>F2.8 for Sony E Mount</td>
+                    <td>₱ 8,990</td>
+                    <td><button class="buttonx" onclick="addToCart('TT Artisan APS-C AF 27mm', 8990, 'Lens4.jpg', 'F2.8 for Sony E Mount')">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td><img src="Lens5.jpeg" alt="Lens 5" class="product-image"></td>
+                    <td>Tamron A067S 50-400mm</td>
+                    <td>f4.5-6.3 Di III VC VXD Lens for Sony E</td>
+                    <td>₱ 88,990</td>
+                    <td><button class="buttonx" onclick="addToCart('Tamron A067S 50-400mm', 88990, 'Lens5.jpeg', 'f4.5-6.3 Di III VC VXD Lens for Sony E')">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td><img src="Lens6.jpeg" alt="Lens 6" class="product-image"></td>
+                    <td>Sigma 15mm f1.4 DG DN</td>
+                    <td>Diagonal Fisheye for Sony E-Mount</td>
+                    <td>₱ 127,990</td>
+                    <td><button class="buttonx" onclick="addToCart('Sigma 15mm f1.4 DG DN', 127990, 'Lens6.jpg', 'Diagonal Fisheye for Sony E-Mount')">Add to Cart</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a class="viewcart" href="cart.html">View Cart</a>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Shutter Collections</title>
+<link rel="icon" type="image/x-icon" href="SCIcon.png">
+<link rel="stylesheet" href="style.css">
+
+<script>
+        function addToCart(product, price, image, details) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const itemIndex = cart.findIndex(item => item.product === product);
+            if (itemIndex !== -1) {
+                cart[itemIndex].quantity += 1;
+            } else {
+                cart.push({ product, price, image, details, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${product} added to cart`);
+        }
+</script>
+</head>
+<body>
+
+<img id="topfilm" src="AboutFilm.jpg">
+<div class="button-container">
+	<a class="index" href="index.html">Home</a>
+	<a class="button" href="AboutUs.html">About Us</a>
+	<a class="button1" href="ContactUs.html">Contact Us</a>
+	<a class="button2" href="Homepage.html">Products</a>
+	<a class="type">Camera Body</a>
+</div>
+ <h1>Product List</h1>
+ 
+ <div class="product-list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Details</th>
+                    <th>Price</th>
+                    <th>Add to Cart</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="Body1.jpeg" alt="Body 1" class="product-image"></td>
+                    <td>DJI Osmo Action 4</td>
+                    <td>Standard Combo, 1/1.3" CMOS Sensor, Wide 155° FOV</td>
+                    <td>₱ 18,690</td>
+                    <td><button class="buttonx" onclick="addToCart('DJI Osmo Action 4', 18690, 'Body1.jpeg', 'Standard Combo, 1/1.3 CMOS Sensor, Wide 155° FOV')">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td><img src="Body2.jpeg" alt="Body 2" class="product-image"></td>
+                    <td>Fujifilm X-S20</td>
+                    <td>Mirrorless Camera Body, 26.1MP APS-C X-Trans BSI CMOS 4 Sensor</td>
+                    <td>₱ 79,990</td>
+                    <td><button class="buttonx" onclick="addToCart('Fujifilm X-S20', 79990, 'Body2.jpeg', 'Mirrorless Camera Body, 26.1MP APS-C X-Trans BSI CMOS 4 Sensor')">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td><img src="Body3.jpeg" alt="Body 3" class="product-image"></td>
+                    <td>Canon EOS R7</td>
+                    <td>Body only, 32.5MP APS-C CMOS Sensor</td>
+                    <td>₱ 80,748</td>
+                    <td><button class="buttonx" onclick="addToCart('Canon EOS R7', 80748, 'Body3.jpeg', 'Body only, 32.5MP APS-C CMOS Sensor')">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td><img src="Body4.jpg" alt="Body 4" class="product-image"></td>
+                    <td>Panasonic Lumix DMC-G7</td>
+                    <td>Mirrorless Micro Four-Thirds with 14-42 mm Lens</td>
+                    <td>₱ 35,991</td>
+                    <td><button class="buttonx" onclick="addToCart('Panasonic Lumix DMC-G7', 35991, 'Body4.jpg', 'Mirrorless Micro Four-Thirds with 14-42 mm Lens')">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td><img src="Body5.png" alt="Body 5" class="product-image"></td>
+                    <td>Canon EOS R50</td>
+                    <td>with 18-45mm Kit, 24.2MP APS-C CMOS Sensor</td>
+                    <td>₱ 46,998</td>
+                    <td><button class="buttonx" onclick="addToCart('Canon EOS R50', 46998, 'Body5.png', 'with 18-45mm Kit, 24.2MP APS-C CMOS Sensor')">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td><img src="Body6.jpg" alt="Body 6" class="product-image"></td>
+                    <td>Sony Alpha A6400</td>
+                    <td>Mirrorless Camera Body Black, 24.2MP APS-C Exmor CMOS Sensor</td>
+                    <td>₱ 47,999</td>
+                    <td><button class="buttonx" onclick="addToCart('Sony Alpha A6400', 47999, 'Body6.jpg', 'Mirrorless Camera Body Black, 24.2MP APS-C Exmor CMOS Sensor')">Add to Cart</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a class="viewcart" href="cart.html">View Cart</a>
+</body>
+</html>

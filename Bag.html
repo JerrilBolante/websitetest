@@ -1,0 +1,68 @@
+<html>
+<head>
+	<title>Shutter Collections</title>
+    <link rel="icon" type="image/x-icon" href="SCIcon.png">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function addToCart(product, price, image, details) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const itemIndex = cart.findIndex(item => item.product === product);
+            if (itemIndex !== -1) {
+                cart[itemIndex].quantity += 1;
+            } else {
+                cart.push({ product, price, image, details, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${product} added to cart`);
+        }
+    </script>
+</head>
+<body>
+    <img id="topfilm" src="AboutFilm.jpg">
+    <div class="button-container">
+        <a class="index" href="index.html">Home</a>
+        <a class="button" href="AboutUs.html">About Us</a>
+        <a class="button1" href="ContactUs.html">Contact Us</a>
+        <a class="button2" href="Homepage.html">Products</a>
+        <a class="type">Camera Bags</a>
+    </div>
+    <h1>Product List</h1>
+    <div class="product-list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Details</th>
+                    <th>Price</th>
+                    <th>Add to Cart</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="Bag1.jpeg" alt="Bag 1" class="product-image"></td>
+                    <td>PGYTECH OneMo Sling 7L</td>
+                    <td>Holds Camera, Drone, iPad, and More</td>
+                    <td>₱ 5,300</td>
+                    <td><button class="buttonx" onclick="addToCart('PGYTECH OneMo Sling 7L', 5300, 'Bag1.jpeg', 'Holds Camera, Drone, iPad, and More')">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td><img src="Bag2.jpeg" alt="Bag 2" class="product-image"></td>
+                    <td>Lowepro Pro Trekker BP 550 AW II Backpack</td>
+                    <td>Holds Pro DSLR/Mirrorless Bodies</td>
+                    <td>₱ 22,941</td>
+                    <td><button class="buttonx" onclick="addToCart('Lowepro Pro Trekker BP 550 AW II Backpack', 22941, 'Bag2.jpeg', 'Holds Pro DSLR/Mirrorless Bodies')">Add to Cart</button></td>
+                </tr>
+                <tr>
+                    <td><img src="Bag3.jpeg" alt="Bag 3" class="product-image"></td>
+                    <td>Fotopro Camera Bag BN-2316</td>
+                    <td>Waterproof and dirt resistant</td>
+                    <td>₱ 2,900</td>
+                    <td><button class="buttonx" onclick="addToCart('Fotopro Camera Bag BN-2316', 2900, 'Bag3.jpeg', 'Waterproof and dirt resistant')">Add to Cart</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a class="viewcart" href="cart.html">View Cart</a>
+</body>
+</html>

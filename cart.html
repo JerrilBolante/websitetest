@@ -1,0 +1,95 @@
+<html>
+<head>
+    <title>Shutter Collections</title>
+    <link rel="icon" type="image/x-icon" href="SCIcon.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .cart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding-top: 20px;
+        }
+        .cart-table {
+            width: 80%;
+            max-width: 1000px;
+            border-collapse: collapse;
+            background-color: #FFA235;
+        }
+        .cart-table th, .cart-table td {
+            border: 1px solid #000000;
+            padding: 8px;
+            text-align: center;
+        }
+        .cart-table th {
+            background-color: #FFA235;
+        }
+    </style>
+    <script>
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartContainer = document.getElementById('cart-items');
+            cartContainer.innerHTML = '';
+            cart.forEach((item, index) => {
+                cartContainer.innerHTML += `
+                    <tr>
+                        <td><img src="${item.image}" alt="${item.product}" class="product-image"></td>
+                        <td>${item.product}</td>
+                        <td>${item.details}</td>
+                        <td>₱${item.price}</td>
+                        <td>${item.quantity}</td>
+                        <td><button class="buttonx" onclick="removeFromCart(${index})">Remove</button></td>
+                    </tr>
+                `;
+            });
+        }
+
+        function updateQuantity(index, quantity) {
+            let cart = JSON.parse(localStorage.getItem('cart'));
+            cart[index].quantity = parseInt(quantity);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+        }
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart'));
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+        }
+
+        function proceedToReceipt() {
+            location.href = 'receipt.html';
+        }
+    </script>
+</head>
+<body onload="loadCart()">
+    <img id="topfilm" src="AboutFilm.jpg">
+    <div class="button-container">
+        <a class="index" href="index.html">Home</a>
+        <a class="button" href="AboutUs.html">About Us</a>
+        <a class="button1" href="ContactUs.html">Contact Us</a>
+        <a class="button2" href="Homepage.html">Products</a>
+        <a class="type">Your Cart</a>
+    </div>
+    <h1>Your Cart</h1>
+    <div class="cart-container">
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Details</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+            </tbody>
+        </table>
+        <button class="button" onclick="proceedToReceipt()">Proceed to Checkout</button>
+    </div>
+</body>
+</html>

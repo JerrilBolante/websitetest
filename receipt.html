@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Receipt</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <img id="topfilm" src="AboutFilm.jpg">
+    <div class="button-container">
+        <a class="index" href="index.html">Home</a>
+        <a class="button" href="AboutUs.html">About Us</a>
+        <a class="button1" href="ContactUs.html">Contact Us</a>
+        <a class="button2" href="Homepage.html">Products</a>
+        <a class="type">Order Receipt</a>
+    </div>
+    <h1>Order Receipt</h1>
+    <div class="receipt-container">
+        <table class="receipt-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Details</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="receipt-items">
+            </tbody>
+        </table>
+        <h2>Total Price: <span id="total-price"></span></h2>
+    </div>
+    <script>
+        function loadReceipt() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const receiptContainer = document.getElementById('receipt-items');
+            let totalPrice = 0;
+            receiptContainer.innerHTML = '';
+            cart.forEach(item => {
+                const totalItemPrice = item.price * item.quantity;
+                totalPrice += totalItemPrice;
+                receiptContainer.innerHTML += `
+                    <tr>
+                        <td><img src="${item.image}" alt="${item.product}" class="product-image"></td>
+                        <td>${item.product}</td>
+                        <td>${item.details}</td>
+                        <td>₱${item.price}</td>
+                        <td>${item.quantity}</td>
+                        <td>₱${totalItemPrice.toFixed(2)}</td>
+                    </tr>
+                `;
+            });
+            document.getElementById('total-price').textContent = '₱' + totalPrice.toFixed(2);
+        }
+
+        window.onload = loadReceipt;
+    </script>
+</body>
+</html>
